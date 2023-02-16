@@ -6,14 +6,24 @@ import firebase from "../../firebase/config";
 import { useNavigate } from "react-router-dom";
 import { addDocument, generateKeywords } from "../../firebase/services";
 
+// liên kết firebase -> auth Fb
 const fbProvider = new firebase.auth.FacebookAuthProvider();
 
 export default function Login() {
   const handleFbLogin = async () => {
+    // dữ liệu form vào data
     const { additionalUserInfo, user } = await auth.signInWithPopup(fbProvider);
+
+    // db lấy từ FireStore
     // console.log({ db });
+
+    // check isNewUser  ~~~ add form -> form
     // console.log({ additionalUserInfo });
+
+    // data user
     // console.log({ user });
+
+    // form data
     if (additionalUserInfo?.isNewUser) {
       addDocument("users", {
         displayName: user.displayName,
@@ -21,7 +31,7 @@ export default function Login() {
         photoURL: user.photoURL,
         uid: user.uid,
         providerId: additionalUserInfo.providerId,
-        keywords: generateKeywords(user.displayName)
+        keywords: generateKeywords(user.displayName),
       });
 
       // db.collection('users').add({
@@ -35,6 +45,8 @@ export default function Login() {
     //  console.log({data})
     return true;
   };
+
+  // Điều hướng về trang Login < Nếu chưa có tk đăng nhập >
   const navigate = useNavigate();
   auth.onAuthStateChanged((user) => {
     // console.log({ user });
@@ -42,6 +54,7 @@ export default function Login() {
       navigate("/");
     }
   });
+
   return (
     <div>
       <Row className="flex justify-center">
