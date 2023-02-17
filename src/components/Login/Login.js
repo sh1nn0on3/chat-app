@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col, Button } from "antd";
 import Title from "antd/es/typography/Title";
-import { auth, db } from "../../firebase/config";
+import { auth } from "../../firebase/config";
 import firebase from "../../firebase/config";
 import { useNavigate } from "react-router-dom";
 import { addDocument, generateKeywords } from "../../firebase/services";

@@ -1,7 +1,5 @@
 import { Spin } from "antd";
-import React, { useContext, useEffect, useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { auth } from "../firebase/config";
+import React, { useContext, useMemo, useState } from "react";
 import useFirbase from "../hooks/useFirestore";
 import { AuthContext } from "./AuthProvider";
 

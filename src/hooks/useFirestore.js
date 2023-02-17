@@ -7,6 +7,7 @@ const useFirbase = (collection, condition) => {
   const [documents, setDocuments] = useState([]);
 
   useEffect(() => {
+    // tạo bảng ở db
     let collectionRef = db.collection(collection).orderBy("createAt");
 
 

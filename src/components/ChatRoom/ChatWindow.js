@@ -1,5 +1,5 @@
 import { Avatar, Button, Form, Input, Tooltip } from "antd";
-import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { AppContext } from "../../Context/AppProvider";
 import { AuthContext } from "../../Context/AuthProvider";
@@ -39,10 +39,6 @@ const ButtonStyled = styled.div`
   align-items: center;
 `;
 
-const MessageListStyled = styled.div`
-  max-height: 100%;
-  overflow-y: auto;
-`;
 
 const ContentStyled = styled.div`
   height: calc(100vh - 56px);
@@ -50,6 +46,11 @@ const ContentStyled = styled.div`
   flex-direction: column;
   padding: 11px;
   justify-content: flex-end;
+`;
+
+const MessageListStyled = styled.div`
+  max-height: 100%;
+  overflow-y: auto;
 `;
 
 const FormStyled = styled(Form)`
@@ -121,7 +122,10 @@ export default function ChatWindow() {
 
   return (
     <WrapperStyled>
+
+      {/* Header  */}
       <HeaderStyled>
+      {/* Bên trái phần InFo */}
         <div className="header__info">
           <p className="header__title">
             {selectedRoom ? selectedRoom.name : ""}
@@ -130,6 +134,7 @@ export default function ChatWindow() {
             {selectedRoom ? selectedRoom.description : ""}
           </span>
         </div>
+        {/* Bên phải mời và phần avt thêm */}
         <ButtonStyled>
           <Button type="text" onClick={() => setIsInviteMemberVisible(true)}>
             <i className="fa-solid fa-user-plus mr-2" />
@@ -148,10 +153,12 @@ export default function ChatWindow() {
           </Avatar.Group>
         </ButtonStyled>
       </HeaderStyled>
+
+      {/* Phần Content */}
       <ContentStyled>
         <MessageListStyled ref={messageListRef}>
           {messages.map((mes) => {
-            console.log("🚀 ~ file: ChatWindow.js:162 ~ ChatWindow ~ mes", mes)
+            // console.log("🚀 ~ file: ChatWindow.js:162 ~ ChatWindow ~ mes", mes)
             return <Message
               	key={mes.id}
               	text={mes.text}
@@ -197,6 +204,7 @@ export default function ChatWindow() {
           </Button>
         </FormStyled>
       </ContentStyled>
+
     </WrapperStyled>
   );
 }

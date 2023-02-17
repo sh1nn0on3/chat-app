@@ -1,10 +1,9 @@
 import { Button, Collapse } from "antd";
 import Link from "antd/es/typography/Link";
-import React, { useContext, useMemo } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { AppContext } from "../../Context/AppProvider";
-import { AuthContext } from "../../Context/AuthProvider";
-import useFirbase from "../../hooks/useFirestore";
+
 
 const { Panel } = Collapse;
 
@@ -50,7 +49,7 @@ export default function RoomList() {
   const { rooms, setIsAddRoomVisible, setSelectedRoomId } =
     useContext(AppContext);
   // console.log(rooms);
-  // console.log({isAddRoomVisible})
+  // console.log({setIsAddRoomVisible})
 
   // console.log({rooms})
 
