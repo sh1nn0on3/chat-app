@@ -156,6 +156,8 @@ export default function ChatWindow() {
 
       {/* Phần Content */}
       <ContentStyled>
+        
+        {/* Phần hiển thị  */}
         <MessageListStyled ref={messageListRef}>
           {messages.map((mes) => {
             // console.log("🚀 ~ file: ChatWindow.js:162 ~ ChatWindow ~ mes", mes)
@@ -187,6 +189,8 @@ export default function ChatWindow() {
             createAt={123123141}
           /> */}
         </MessageListStyled>
+        
+        {/* Phần Form điền input */}
         <FormStyled form={form}>
           <Form.Item name="message">
             <Input
@@ -203,6 +207,7 @@ export default function ChatWindow() {
             Gửi
           </Button>
         </FormStyled>
+
       </ContentStyled>
 
     </WrapperStyled>
