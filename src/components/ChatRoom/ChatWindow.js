@@ -39,7 +39,6 @@ const ButtonStyled = styled.div`
   align-items: center;
 `;
 
-
 const ContentStyled = styled.div`
   height: calc(100vh - 56px);
   display: flex;
@@ -122,10 +121,9 @@ export default function ChatWindow() {
 
   return (
     <WrapperStyled>
-
       {/* Header  */}
       <HeaderStyled>
-      {/* Bên trái phần InFo */}
+        {/* Bên trái phần InFo */}
         <div className="header__info">
           <p className="header__title">
             {selectedRoom ? selectedRoom.name : ""}
@@ -156,20 +154,20 @@ export default function ChatWindow() {
 
       {/* Phần Content */}
       <ContentStyled>
-        
         {/* Phần hiển thị  */}
         <MessageListStyled ref={messageListRef}>
           {messages.map((mes) => {
             // console.log("🚀 ~ file: ChatWindow.js:162 ~ ChatWindow ~ mes", mes)
-            return <Message
-              	key={mes.id}
-              	text={mes.text}
-              	photoURL={mes.photoURL}
-              	displayName={mes.displayName}
-              	createAt={1234}
-            	/>
-          	})
-          }
+            return (
+              <Message
+                key={mes.id}
+                text={mes.text}
+                photoURL={mes.photoURL}
+                displayName={mes.displayName}
+                createAt={1234}
+              />
+            );
+          })}
           {/* <Message
             text="test"
             displayName="Tung 25 tuoi"
@@ -189,7 +187,7 @@ export default function ChatWindow() {
             createAt={123123141}
           /> */}
         </MessageListStyled>
-        
+
         {/* Phần Form điền input */}
         <FormStyled form={form}>
           <Form.Item name="message">
@@ -207,9 +205,7 @@ export default function ChatWindow() {
             Gửi
           </Button>
         </FormStyled>
-
       </ContentStyled>
-
     </WrapperStyled>
   );
 }
